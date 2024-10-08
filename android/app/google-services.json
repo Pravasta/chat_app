@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239495374231",
+    "project_id": "chat-app-b182e",
+    "storage_bucket": "chat-app-b182e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239495374231:android:577a29ceb65df27b2a90d2",
+        "android_client_info": {
+          "package_name": "com.pravasta.chat_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXYmJdxz76qbWKYAs5wBhqJw6C953zL5k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

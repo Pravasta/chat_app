@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 abstract class UserService {
   Future<Either<String, UserResponseModel>> getUser();
   Future<Either<String, List<UserResponseModel>>> getAllUser();
+  a
 }
 
 class UserServiceImpl implements UserService {

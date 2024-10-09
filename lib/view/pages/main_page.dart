@@ -1,5 +1,9 @@
+import 'package:chat_app/service/notification_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 
 import '../../bloc/user/user_bloc.dart';
 import 'chat_page.dart';
@@ -19,6 +23,11 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     context.read<UserBloc>().add(const UserEvent.getUser());
+    NotificationServiceImpl(
+      client: http.Client(),
+      firestore: FirebaseFirestore.instance,
+      auth: FirebaseAuth.instance,
+    ).initialized();
     super.initState();
   }
 

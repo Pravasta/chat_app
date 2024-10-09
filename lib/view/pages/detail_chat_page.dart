@@ -1,3 +1,4 @@
+import 'package:chat_app/bloc/push_notification/push_notification_bloc.dart';
 import 'package:chat_app/bloc/send_message/send_message_bloc.dart';
 import 'package:chat_app/core/common/common.dart';
 import 'package:chat_app/core/components/components.dart';
@@ -129,6 +130,12 @@ class _DetailChatPageState extends State<DetailChatPage> {
                 context
                     .read<SendMessageBloc>()
                     .add(SendMessageEvent.sendMessage(message));
+
+                context.read<PushNotificationBloc>().add(
+                    PushNotificationEvent.sendNotification(
+                        widget.dataChat.receiverId, messageC.text));
+
+                messageC.clear();
               },
               child: Image.asset(
                 UrlAssets.sendImage,

@@ -50,35 +50,42 @@ class ChatPage extends StatelessWidget {
             }
 
             if (snapshot.hasData) {
-              return ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) {
-                  final data = snapshot.data![index];
+              if (snapshot.data!.isNotEmpty) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    final data = snapshot.data![index];
 
-                  final displayName = data.receiverId == userId
-                      ? data.receiverName
-                      : data.senderName;
+                    final displayName = data.receiverId == userId
+                        ? data.receiverName
+                        : data.senderName;
 
-                  final dataChat = ChatRequestModel(
-                    senderId: data.senderId,
-                    receiverId: data.receiverId,
-                    name: displayName,
-                    senderName: data.senderName,
-                    lastMessage: data.lastMessage,
-                    date: data.timestamp,
-                  );
+                    final dataChat = ChatRequestModel(
+                      senderId: data.senderId,
+                      receiverId: data.receiverId,
+                      name: displayName,
+                      senderName: data.senderName,
+                      lastMessage: data.lastMessage,
+                      date: data.timestamp,
+                    );
 
-                  return ChatCard(
-                    dataChat: dataChat,
-                    onTap: () => Navigation.pushName(
-                      RoutesName.detailChat,
-                      arguments: dataChat,
-                    ),
-                  );
-                },
-              );
+                    return ChatCard(
+                      dataChat: dataChat,
+                      onTap: () => Navigation.pushName(
+                        RoutesName.detailChat,
+                        arguments: dataChat,
+                      ),
+                    );
+                  },
+                );
+              } else {
+                return Center(
+                  child: Text('Let\'s start chatt with Friend',
+                      style: AppText.text16),
+                );
+              }
             }
           }
 

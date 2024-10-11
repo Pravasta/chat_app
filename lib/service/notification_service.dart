@@ -113,6 +113,9 @@ class NotificationServiceImpl implements NotificationService {
 
   @override
   Future<void> firebaseBackgroundHandler(RemoteMessage message) async {
+    print('show notif tit : ${message.notification!.title}');
+    print('show notif bod : ${message.notification!.body}');
+    print('Show message data: ${message.data}');
     showNotification(
       title: message.notification!.title,
       body: message.notification!.body,
